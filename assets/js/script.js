@@ -122,3 +122,11 @@ const propiedadesAlquiler = {
 
 const venta = document.querySelector('#venta')
 const alquiler = document.querySelector('#alquiler')
+
+const renderPropiedades = (obj, container) => {
+  console.log(obj, container);
+  
+}
+
+renderPropiedades(propiedadesVenta, venta)
+renderPropiedades(propiedadesAlquiler, alquiler)
