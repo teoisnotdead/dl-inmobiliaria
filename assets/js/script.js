@@ -131,9 +131,8 @@ const renderPropiedades = (obj, container) => {
   container.appendChild(h1)
 
   const divRow = document.createElement('div')
-  divRow.classList.add('row')
+  divRow.classList.add('row', 'mb-4')
   container.appendChild(divRow)
-
 
   for (const propiedad of obj.propiedades) {
     console.log(propiedad);
@@ -169,7 +168,6 @@ const renderPropiedades = (obj, container) => {
     divRow.appendChild(div)
   }
 
-
   const btnVerTodo = document.createElement('a')
   btnVerTodo.href = obj.venta ? 'propiedades_venta.html' : 'propiedades_alquiler.html'
   btnVerTodo.classList.add('btn', 'btn-dark')
@@ -178,4 +176,3 @@ const renderPropiedades = (obj, container) => {
 }
 
 renderPropiedades(propiedadesVenta, venta)
-renderPropiedades(propiedadesAlquiler, alquiler)
