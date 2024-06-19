@@ -123,7 +123,7 @@ const propiedadesAlquiler = {
 const venta = document.querySelector('#venta')
 const alquiler = document.querySelector('#alquiler')
 
-const renderPropiedades = (obj, container) => {
+const renderPropiedades = (obj, container, cantidad) => {
   console.log(obj, container);
 
   const h1 = document.createElement('h1')
@@ -134,7 +134,9 @@ const renderPropiedades = (obj, container) => {
   divRow.classList.add('row', 'mb-4')
   container.appendChild(divRow)
 
-  for (const propiedad of obj.propiedades) {
+  const propiedades = obj.propiedades.slice(0, cantidad)
+
+  for (const propiedad of propiedades) {
     console.log(propiedad);
     const div = document.createElement('div')
     div.classList.add('col-md-4', 'mb-4')
@@ -168,11 +170,11 @@ const renderPropiedades = (obj, container) => {
     divRow.appendChild(div)
   }
 
-  const btnVerTodo = document.createElement('a')
-  btnVerTodo.href = obj.venta ? 'propiedades_venta.html' : 'propiedades_alquiler.html'
-  btnVerTodo.classList.add('btn', 'btn-dark')
-  btnVerTodo.textContent = `Ver más propiedades en ${obj.venta ? 'venta' : 'alquiler'}`
-  container.appendChild(btnVerTodo)
+  if (cantidad) {
+    const btnVerTodo = document.createElement('a')
+    btnVerTodo.href = obj.venta ? 'propiedades_venta.html' : 'propiedades_alquiler.html'
+    btnVerTodo.classList.add('btn', 'btn-dark')
+    btnVerTodo.textContent = `Ver más propiedades en ${obj.venta ? 'venta' : 'alquiler'}`
+    container.appendChild(btnVerTodo)
+  }
 }
-
-renderPropiedades(propiedadesVenta, venta)
