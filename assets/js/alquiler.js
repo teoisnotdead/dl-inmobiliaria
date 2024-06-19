@@ -1,1 +1,1 @@
-renderPropiedades(propiedadesAlquiler, alquiler, 3)
+renderPropiedades(propiedadesAlquiler, alquiler)
