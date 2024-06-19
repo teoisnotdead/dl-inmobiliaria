@@ -125,7 +125,23 @@ const alquiler = document.querySelector('#alquiler')
 
 const renderPropiedades = (obj, container) => {
   console.log(obj, container);
+
+  const h1 = document.createElement('h1')
+  h1.textContent = `Propiedades en ${obj.venta ? 'venta' : 'alquiler'}`
+  container.appendChild(h1)
+
+  const divRow = document.createElement('div')
+  divRow.classList.add('row')
+  container.appendChild(divRow)
+
   
+  // for of
+
+  const btnVerTodo = document.createElement('a')
+  btnVerTodo.href = obj.venta ? 'propiedades_venta.html' : 'propiedades_alquiler.html'
+  btnVerTodo.classList.add('btn', 'btn-dark')
+  btnVerTodo.textContent = `Ver más propiedades en ${obj.venta ? 'venta' : 'alquiler'}`
+  container.appendChild(btnVerTodo)
 }
 
 renderPropiedades(propiedadesVenta, venta)
