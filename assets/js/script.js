@@ -136,33 +136,39 @@ const renderPropiedades = (obj, container, cantidad) => {
 
   const propiedades = obj.propiedades.slice(0, cantidad)
 
-  for (const propiedad of propiedades) {
-    console.log(propiedad);
+  for (const { img, title, description, location, bedrooms, bathrooms, cost, smoke, pets } of propiedades) {
+    const smokeClass = smoke ? 'text-success' : 'text-danger'
+    const smokeText = smoke ? 'Se permite fumar' : 'No se permite fumar'
+    const smokeIcon = smoke ? 'fa-smoking' : 'fa-smoking-ban'
+    const petsClass = pets ? 'text-success' : 'text-danger'
+    const petsText = pets ? 'Mascotas permitidas' : 'No se permiten mascotas'
+    const petsIcon = pets ? 'fas fa-paw' : 'fa-solid fa-ban'
+
     const div = document.createElement('div')
     div.classList.add('col-md-4', 'mb-4')
     div.innerHTML = `
           <div class="card">
-            <img src="${propiedad.img}" class="card-img-top" alt="Imagen del departamento" />
+            <img src="${img}" class="card-img-top" alt="Imagen del departamento" />
             <div class="card-body">
               <h5 class="card-title">
-                ${propiedad.title}
+                ${title}
               </h5>
               <p class="card-text">
-                ${propiedad.description}
+                ${description}
               </p>
               <p>
-                <i class="fas fa-map-marker-alt"></i> ${propiedad.location}
+                <i class="fas fa-map-marker-alt"></i> ${location}
               </p>
               <p>
-                <i class="fas fa-bed"></i> ${propiedad.bedrooms} Habitaciones |
-                <i class="fas fa-bath"></i> ${propiedad.bathrooms} Baños
+                <i class="fas fa-bed"></i> ${bedrooms} Habitaciones |
+                <i class="fas fa-bath"></i> ${bathrooms} Baños
               </p>
-              <p><i class="fas fa-dollar-sign"></i> ${propiedad.cost}</p>
-              <p class="${propiedad.smoke ? 'text-success' : 'text-danger'}">
-                <i class="fas ${propiedad.smoke ? 'fa-smoking' : 'fa-smoking-ban'}"></i> ${propiedad.smoke ? 'Se permite fumar' : 'No se permite fumar'}
+              <p><i class="fas fa-dollar-sign"></i> ${cost}</p>
+              <p class="${smokeClass}">
+                <i class="fas ${smokeIcon}"></i> ${smokeText}
               </p>
-              <p class="${propiedad.pets ? 'text-success' : 'text-danger'}">
-                <i class="${propiedad.pets ? 'fas fa-paw' : 'fa-solid fa-ban'}"></i> ${propiedad.pets ? 'Mascotas permitidas' : 'No se permiten mascotas'}
+              <p class="${petsClass}">
+                <i class="${petsIcon}"></i> ${petsText}
               </p>
             </div>
           </div> 
@@ -171,10 +177,12 @@ const renderPropiedades = (obj, container, cantidad) => {
   }
 
   if (cantidad) {
+    const ventaHref = obj.venta ? 'propiedades_venta.html' : 'propiedades_alquiler.html'
+    const btnText = obj.venta ? 'venta' : 'alquiler'
     const btnVerTodo = document.createElement('a')
-    btnVerTodo.href = obj.venta ? 'propiedades_venta.html' : 'propiedades_alquiler.html'
+    btnVerTodo.href = ventaHref
     btnVerTodo.classList.add('btn', 'btn-dark')
-    btnVerTodo.textContent = `Ver más propiedades en ${obj.venta ? 'venta' : 'alquiler'}`
+    btnVerTodo.textContent = `Ver más propiedades en ${btnText}`
     container.appendChild(btnVerTodo)
   }
 }
