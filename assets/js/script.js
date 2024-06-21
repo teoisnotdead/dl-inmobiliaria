@@ -177,10 +177,10 @@ const renderPropiedades = (obj, container, cantidad) => {
   }
 
   if (cantidad) {
-    const ventaHref = obj.venta ? 'propiedades_venta.html' : 'propiedades_alquiler.html'
+    const href = obj.venta ? 'propiedades_venta.html' : 'propiedades_alquiler.html'
     const btnText = obj.venta ? 'venta' : 'alquiler'
     const btnVerTodo = document.createElement('a')
-    btnVerTodo.href = ventaHref
+    btnVerTodo.href = href
     btnVerTodo.classList.add('btn', 'btn-dark')
     btnVerTodo.textContent = `Ver más propiedades en ${btnText}`
     container.appendChild(btnVerTodo)
